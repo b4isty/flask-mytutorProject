@@ -1,0 +1,92 @@
+{% extends "template.html" %}
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-allign: center;
+        font-family: arial;
+    }
+
+    a {
+        text-decoration: none;
+        font-size: 22px;
+        color: black;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .container::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+{% block body %}
+    <div class="container">
+
+        <div class="card">
+            <img src="/static/images/pic.jpg" alt="John" style="width:15% ;height:20%">
+            <div class="container">
+                <h1>{{ username }}</h1>
+                <p class="title">CEO & Founder, Example</p>
+                <p>Harvard University</p>
+                <div style="margin: 24px 0;">
+                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                </div>
+                <p>
+                    <button>Contact</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="container1">
+        <h1 style="text-align: center"> Edit Profile</h1>
+        <form class="form-horizontal" action="" method="POST">
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="fname">First Name:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="fname" placeholder="FirstName" name="fname">
+                </div>
+            </div>
+            <div class="form-group" action="">
+                <label class="control-label col-sm-3" for="lname">Last Name:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="lname" placeholder="Last Name" name="lname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="password">Old Password:</label>
+                <div class="col-sm-5">
+                    <input type="password" class="form-control" id="pass" placeholder="OldPassword" name="pass">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="password">New Password:</label>
+                <div class="col-sm-5">
+                    <input type="password" class="form-control" id="newpass" placeholder="NewPassword"
+                           name="newpass">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="number">Change Mobile No:</label>
+                <div class="col-sm-5">
+                    <input type="number" class="form-control" id="number" placeholder="New Number" name="mobile">
+                </div>
+            </div>
+            <div class="col-sm-8" style="text-align:right;">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+
+        </form>
+    </div>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'edit.css') }}">
+{% endblock %}

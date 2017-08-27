@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script langauage="javascript">
+        function showMessage(value){
+            document.getElementById("message").innerHTML = value;
+        }
+    </script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form class="/action_page.php">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <textarea class="mdl-textfield__input" type="text" rows= "10" id="text5" ></textarea>
+                    <label class="mdl-textfield__label" for="text5">Suggest here...</label>
+                </div>
+            </form>
+        </div>
+    </div>
+     <button type ="text" class ="btn btn-success"><b>Suggest</b></button>
+</div>
+<link rel ="stylesheet" type="text/css" href="{{url_for('static',filename = 'style.css')}}">
+    {{ x }}
+
+</body>
+</html>

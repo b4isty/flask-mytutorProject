@@ -1,52 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
 
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=devise-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=devise-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-</head>
-<style>
-}
-    .logo {
-      font-size: 150px;
-  }
-</style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+    </head>
+    <style>
 
-<nav class="navbar navbar-default">
-    <div class ="container-fluid">
-    <div class ="navbar-header">
-        <a class="navbar-brand" href="#">MyTutor</a>
-    </div>
-    </div>
-    <ul class = "nav navbar-nav">
-        <li class ="active"><a href="#">Home</a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Subjects<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#"></a>Python</li>
-                <li><a href="#"></a>Html</li>
-                <li><a href="#"></a>JavaScript</li>
-                <li><a href="#"></a>Flask</li>
-                <li><a href="#"></a>Django</li>
+        .navbar-inverse {
+            background-color: #9b9fcd !important;
+            min-height: 50px;
+        }
+    </style>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="{{ url_for('index') }}">MyTutor</a>
+                        </div>
+
+            <ul class="nav navbar-nav">
+                <li class="dashboard"><a href="/">Home</a></li>
+                {% if session.logged_in %}
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Subjects<span
+                            class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/python">Python</a></li>
+                            <li><a class="dropdown-item" href="/html">Html</a></li>
+                            <li><a class="dropdown-item" href="/javascript">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="/flask">Flask</a></li>
+                            <li><a class="dropdown-item" href="/django">Django</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+                <li><a href="/about">About</a></li>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search here">
+                    </div>
+                    <botton type="submit" class="btn btn-info">Submit</botton>
+                </form>
             </ul>
-        </li>
-        <li><a href="#about">About</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-    </div>
-</nav>
-<link rel ="stylesheet" type="text/css" href="{{url_for('static',filename = 'wb.css')}}">
-{% block body %}
-{% endblock %}
+            <ul class="nav navbar-nav navbar-right">
+
+                {% if session.logged_in %}
+                    <li><a style="color:blue" href="/profile"><span class="glyphicon glyphicon-user"></span>Profile</a>
+                    </li>
+                    <li style="margin-right: 50px;"><a style="color:blue" href="/logout"><span
+                            class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                {% else %}
+                    <li><a style="color:limegreen" href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                    </li>
+                    <li><a style="color:blue" href="/login"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+                    </li>
+
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% block body %}
+    {% endblock %}
 </html>

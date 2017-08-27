@@ -1,0 +1,51 @@
+{% extends 'template.html' %}
+<style>
+    body{
+        background-color:lightblue;
+    }
+    .profile{
+        margin: 20px 0;
+    }
+    .profile-sidebar{
+        padding:20px 0 10px 0;
+    }
+    .profile-userpic{
+        float:none;
+        margine:0 auto;
+        width:20%
+        height:30%
+    }
+</style>
+{% block body %}
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-6">
+                <div class="profile-sidebar">
+                    <div class="profile-userpic">
+                        <img src="/static/images/pic.jpg" alt="" class="img -responsive img-circle" width="130"
+                             ,height="150">
+                    </div>
+                    <div class="profile-user-title">
+                        <div class="profile-user-name">
+                            <h2>{{ username }}</h2>
+                        </div>
+                    </div>
+                    <div class="profile-user-buttons">
+                        <botton class="btn btn-success btn-sm">Follow</botton>
+                        <a href="/message"><botton class="btn btn-info btn-sm">Message</botton></a>
+                    </div>
+                    <div class="profile-use-menu">
+                        <ul class="nav">
+                            <li class="active"><a href="/" class="glyphicon glyphicon-home"><strong > Overview</strong></a></li>
+                            <li class=""><a  href="/profile" class="glyphicon glyphicon-user"><strong> Profile</strong></a></li>
+                            <li class><a href="{{ url_for('edit_profile', username=username) }}" class="glyphicon glyphicon-edit"><strong> EditProfile</strong></a></li>
+                            <li class=""><a href="" class="glyphicon glyphicon-ok"><strong> Tasks</strong></a></li>
+                            <li class=""><a href="" class="glyphicon glyphicon-flag"><strong> help</strong></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <link rel ="stylesheet" type="text/css" href="{{url_for('static',filename = 'style.css')}}">
+{% endblock %}

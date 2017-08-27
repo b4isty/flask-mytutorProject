@@ -1,0 +1,79 @@
+{% extends 'template.html'%}
+
+{% block body %}
+<head>
+    <title>Signup</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+    .jumbotron {
+        background-color: lightgrey;
+        padding: 70px 9px;
+    }
+
+    body {
+        background-color: cadetblue;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1><b>Signup</b></h1>
+        </div>
+
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="firstname">First Name:</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password</label>
+                <input type="password" class="form-control" id="pwd" name="pwd"
+                       placeholder="password(upto 8 characters)">
+            </div>
+            <div class="form-group">
+                <label for="number">Mobile No</label>
+                <input type="number" class="form-control" name="mobile" id="number" placeholder="Mobile No(with country code)">
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" id="remember"> Remember me</label>
+            </div>
+
+            <button type="submit" class="btn btn-success"><b>Submit</b></button>
+        </form>
+        <button onclick="getLocation()">Your Location</button>
+        <p id="demo"></p>
+        <script>
+            var x = document.getElementById("demo");
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+            }
+        </script>
+        {{ ip }}
+    </div>
+
+
+</body>
+{% endblock %}
